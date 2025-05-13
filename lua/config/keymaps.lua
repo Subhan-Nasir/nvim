@@ -14,6 +14,8 @@ vim.keymap.set("v", "<", "<gv")
 
 vim.keymap.set("n", "]b", "<CMD>bn<CR>", {silent = true, desc = "Next buffer"})
 vim.keymap.set("n", "[b", "<CMD>bp<CR>", {silent = true, desc = "Next buffer"})
+vim.keymap.set("n", "<leader>bd", "<CMD>bd<CR>", {silent = true, desc = "Close buffer"})
+
 
 
 -- Using `ggVG` adds an extra new line when pasting
