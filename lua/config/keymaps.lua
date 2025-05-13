@@ -12,6 +12,9 @@ vim.keymap.set("v", "<s-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
 
+vim.keymap.set("n", "]b", "<CMD>bn<CR>", {silent = true, desc = "Next buffer"})
+vim.keymap.set("n", "[b", "<CMD>bp<CR>", {silent = true, desc = "Next buffer"})
+
 
 -- Using `ggVG` adds an extra new line when pasting
 vim.keymap.set("n", "<leader>va", "G$vgg0", {desc = "Select entire file"})
