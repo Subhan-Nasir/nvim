@@ -11,6 +11,8 @@ vim.wo.signcolumn = "yes"
 
 vim.opt.termguicolors = true
 
+vim.opt.scrolloff= 5
+
 -- vim.opt.list = true
 
 vim.diagnostic.config({
