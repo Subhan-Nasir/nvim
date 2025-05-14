@@ -3,8 +3,8 @@ vim.keymap.set("i", "<a-3>", "#")
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Move selection up and down
-vim.keymap.set("n", "<s-j>", ":m .+1<CR>==") -- move line up(n)
-vim.keymap.set("n", "<s-k>", ":m .-2<CR>==") -- move line down(n)
+vim.keymap.set("n", "<s-j>", ":m .+1<CR>==")     -- move line up(n)
+vim.keymap.set("n", "<s-k>", ":m .-2<CR>==")     -- move line down(n)
 vim.keymap.set("v", "<s-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
 vim.keymap.set("v", "<s-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
 
@@ -12,14 +12,14 @@ vim.keymap.set("v", "<s-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
 
-vim.keymap.set("n", "]b", "<CMD>bn<CR>", {silent = true, desc = "Next buffer"})
-vim.keymap.set("n", "[b", "<CMD>bp<CR>", {silent = true, desc = "Next buffer"})
-vim.keymap.set("n", "<leader>bd", "<CMD>bd<CR>", {silent = true, desc = "Close buffer"})
+vim.keymap.set("n", "]b", "<CMD>bn<CR>", { silent = true, desc = "Next buffer" })
+vim.keymap.set("n", "[b", "<CMD>bp<CR>", { silent = true, desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bd", "<CMD>bd<CR>", { silent = true, desc = "Close buffer" })
 
-vim.keymap.set({"n", "v"}, "<leader>/", "gcc", {remap = true})
+vim.keymap.set({ "n", "v" }, "<leader>/", "gcc", { remap = true })
 
 -- Using `ggVG` adds an extra new line when pasting
-vim.keymap.set("n", "<leader>va", "G$vgg0", {desc = "Select entire file"})
+vim.keymap.set("n", "<leader>va", "G$vgg0", { desc = "Select entire file" })
 
 
 
@@ -34,15 +34,18 @@ vim.api.nvim_create_autocmd(
             -- Buffer local mappings.
             -- See `:help vim.lsp.*` for documentation on any of the below functions
             local opts = { buffer = ev.buf }
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-            vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, opts)
-            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-            vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-            vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-            vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 
-            vim.keymap.set("n", "<leader>f", function()
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "Go to definition"})
+            vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Hover" })
+            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = ev.buf, desc = "Go to implementation" })
+            vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition,
+                { buffer = ev.buf, desc = "Go to type definition" })
+            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename variable" })
+            vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action,
+                { buffer = ev.buf, desc = "Code actions" })
+            vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = ev.buf, desc = "Go to references" })
+
+            vim.keymap.set("n", "<leader>cf", function()
                 vim.lsp.buf.format({ async = true })
             end, opts)
 
