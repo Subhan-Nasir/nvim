@@ -16,7 +16,7 @@ vim.keymap.set("n", "]b", "<CMD>bn<CR>", {silent = true, desc = "Next buffer"})
 vim.keymap.set("n", "[b", "<CMD>bp<CR>", {silent = true, desc = "Next buffer"})
 vim.keymap.set("n", "<leader>bd", "<CMD>bd<CR>", {silent = true, desc = "Close buffer"})
 
-
+vim.keymap.set({"n", "v"}, "<leader>/", "gcc", {remap = true})
 
 -- Using `ggVG` adds an extra new line when pasting
 vim.keymap.set("n", "<leader>va", "G$vgg0", {desc = "Select entire file"})
