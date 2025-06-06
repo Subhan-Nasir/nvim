@@ -1,6 +1,7 @@
 return {
     {
         "williamboman/mason.nvim",
+        lazy=false,
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig",
@@ -22,24 +23,26 @@ return {
                         require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
                     end,
                 },
-                angularls = {}
+                pylsp = {}
+                -- angularls = {}
             },
         },
         config = function(_, opts)
             require("mason").setup()
 
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "angularls", "ts_ls" },
+                ensure_installed = { "lua_ls", "ts_ls", "pylsp" },
+                automatic_installation = false,
+                automatic_enable = false
             })
+
             local lspconfig = require("lspconfig")
 
             for server, config in pairs(opts.servers) do
-                -- vim.lsp.config(server, config)
+                vim.lsp.config(server, config)
                 lspconfig[server].setup(config)
-                vim.lsp.enable(server)
+                -- vim.lsp.enable(server)
             end
-
         end,
     },
 }
-
