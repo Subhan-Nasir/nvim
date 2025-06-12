@@ -4,7 +4,21 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     -- or if using mini.icons/mini.nvim
     -- dependencies = { "echasnovski/mini.icons" },
-    opts = {},
+    opts = {
+    },
+    config = function()
+        require("fzf-lua").setup({
+            winopts = {
+                border = "bold",
+                width = 0.90,
+                preview = {
+                    horizontal = "right:50%",
+                    border = "bold"
+                }
+            },
+
+        })
+    end,
     keys = {
         {
             "<leader>ff",
