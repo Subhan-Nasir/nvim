@@ -1,4 +1,6 @@
 vim.keymap.set("i", "<a-3>", "#")
+vim.keymap.set('i', '<a-BS>', '<C-W>', {noremap = true})
+
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
@@ -12,8 +14,13 @@ vim.keymap.set("v", "<s-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
 
-vim.keymap.set("n", "]b", "<CMD>bn<CR>", { silent = true, desc = "Next buffer" })
-vim.keymap.set("n", "[b", "<CMD>bp<CR>", { silent = true, desc = "Next buffer" })
+-- vim.keymap.set("n", "]b", "<CMD>bn<CR>", { silent = true, desc = "Next buffer" })
+-- vim.keymap.set("n", "[b", "<CMD>bp<CR>", { silent = true, desc = "Next buffer" })
+
+vim.keymap.set("n", "<tab>", "<CMD>bn<CR>", { silent = true, desc = "Next buffer" })
+vim.keymap.set("n", "<s-tab>", "<CMD>bp<CR>", { silent = true, desc = "Next buffer" })
+
+
 vim.keymap.set("n", "<leader>bd", "<CMD>bd<CR>", { silent = true, desc = "Close buffer" })
 
 vim.keymap.set({ "n", "v" }, "<leader>/", "gcc", { remap = true })
