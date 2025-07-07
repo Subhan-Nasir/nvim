@@ -40,28 +40,31 @@ vim.api.nvim_create_autocmd(
 
             -- Buffer local mappings.
             -- See `:help vim.lsp.*` for documentation on any of the below functions
-            local opts = { buffer = ev.buf }
+            -- local opts = { buffer = ev.buf }
 
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "Go to definition"})
+            vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Code actions" })
+
+            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "Go to definition"})
+            vim.keymap.set("n", "<leader>gD", vim.lsp.buf.type_definition, { buffer = ev.buf, desc = "Go to type definition" })
+            vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { buffer = ev.buf, desc = "Go to implementation" })
+            vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { buffer = ev.buf, desc = "Go to references" })
+
             vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Hover" })
-            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = ev.buf, desc = "Go to implementation" })
-            vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition,
-                { buffer = ev.buf, desc = "Go to type definition" })
-            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename variable" })
-            vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action,
-                { buffer = ev.buf, desc = "Code actions" })
-            vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = ev.buf, desc = "Go to references" })
+            vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename variable" })
 
-            vim.keymap.set("n", "<leader>cf", function()
-                vim.lsp.buf.format({ async = true })
-            end, opts)
+            vim.keymap.set({ "n", "v" }, "<leader>cf",
+                function()
+                    vim.lsp.buf.format({ async = true })
+                end,
+                { buffer = ev.buf, desc = "Code Format" }
+            )
 
             -- Open the diagnostic under the cursor in a float window
             vim.keymap.set("n", "<leader>d", function()
                 vim.diagnostic.open_float({
                     border = "rounded",
                 })
-            end, opts)
+            end, {buffer = ev.buf, desc = "Open diagnostics under the cursor"})
         end,
     }
 )
