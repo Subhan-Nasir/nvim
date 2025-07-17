@@ -1,4 +1,3 @@
-
 -- disable netrw 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -26,8 +25,11 @@ vim.opt.scrolloff = 5
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 
+vim.cmd.highlight('IndentLine guifg=#636363')
+vim.cmd.highlight('IndentLineCurrent guifg=#D3D3D3')
 
 -- vim.opt.list = true
 

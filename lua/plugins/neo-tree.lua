@@ -8,13 +8,14 @@ return {
         -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     keys = {
-        { "<leader>e", "<cmd>Neotree toggle show<cr>" }
+        { "<leader>e", "<cmd>Neotree toggle show<cr>", nowait=true }
     },
-    lazy = false, -- neo-tree will lazily load itself
+    lazy = true, -- neo-tree will lazily load itself
     ---@module "neo-tree"
     ---@type neotree.Config?
     opts = {
         -- fill any relevant options here
+        auto_clean_after_session_restore = true,
         filesystem = {
             follow_current_file = {
                 enabled = true

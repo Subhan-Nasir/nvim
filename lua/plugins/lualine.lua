@@ -16,7 +16,6 @@ return {
                         "lsp_progress"
                     }
                 }
-
             })
         end
     },
