@@ -133,7 +133,9 @@ return {
                     },
                 },
             },
-            svelte = {}
+            svelte = {},
+            bashls = {},
+            jsonls = {}
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})

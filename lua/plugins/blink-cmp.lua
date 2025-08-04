@@ -11,6 +11,9 @@ return {
             ["<a-j>"] = { "select_next", "fallback" },
             ["<a-k>"] = { "select_prev", "fallback" },
         },
+        highlight = {
+            use_nvim_cmp_as_default = true,
+        },
         appearance = {
             nerd_font_variant = 'mono'
         },

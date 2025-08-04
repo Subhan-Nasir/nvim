@@ -9,8 +9,8 @@ return {
     config = function()
         require("fzf-lua").setup({
             winopts = {
-                border = "bold",
-                -- border = "solid",
+                -- border = "bold",
+                border = "solid",
                 width = 0.90,
                 preview = {
                     horizontal = "right:50%",

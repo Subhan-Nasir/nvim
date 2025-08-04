@@ -42,8 +42,8 @@ return {
                 sort_by = 'insert_at_end',
                 offsets = {
                     {
-                        filetype = "NvimTree",
-                        text="Nvim Tree",
+                        filetype = "neo-tree",
+                        text="",
                         separator= true,
                         text_align = "left"
                     }
