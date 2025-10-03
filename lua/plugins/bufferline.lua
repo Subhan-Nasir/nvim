@@ -46,6 +46,12 @@ return {
                         text="",
                         separator= true,
                         text_align = "left"
+                    },
+                    {
+                        filetype = "snacks_layout_box",
+                        text = "",
+                        highlight = 'Directory',
+                        text_align = 'left',
                     }
                 },
             },
