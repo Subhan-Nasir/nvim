@@ -18,6 +18,11 @@ return {
                     border = "solid"
                 }
             },
+            keymap = {
+                fzf = {
+                    ["ctrl-q"] = "select-all+accept",
+                }
+            }
 
         })
     end,
@@ -32,8 +37,13 @@ return {
             function() require("fzf-lua").live_grep() end,
             desc = "Grep files"
         },
+        -- {
+        --     "<leader>sb",
+        --     function() require("fzf-lua").buffers() end,
+        --     desc = "Find buffer"
+        -- },
         {
-            "<leader>sb",
+            "<leader>t",
             function() require("fzf-lua").buffers() end,
             desc = "Find buffer"
         },

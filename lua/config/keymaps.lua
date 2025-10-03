@@ -78,11 +78,6 @@ vim.api.nvim_create_autocmd(
     }
 )
 
---- This function is taken directly from [LazyVim's UI utils](https://github.com/LazyVim/LazyVim/blob/a1c3ec4cd43fe61e3b614237a46ac92771191c81/lua/lazyvim/util/ui.lua#L228).
---- Besides some other nice features, this primarily prevents neo-tree from
---- taking up the whole screen after deleting a buffer.
---- (Thank you folke)
----@param buf number?
 local function bufremove(buf)
     buf = buf or 0
     buf = buf == 0 and vim.api.nvim_get_current_buf() or buf
