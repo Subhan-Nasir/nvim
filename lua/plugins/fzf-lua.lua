@@ -22,6 +22,9 @@ return {
                 fzf = {
                     ["ctrl-q"] = "select-all+accept",
                 }
+            },
+            files = {
+                git_icons = true,
             }
 
         })
@@ -34,7 +37,10 @@ return {
         },
         {
             "<leader>sg",
-            function() require("fzf-lua").live_grep() end,
+            function() require("fzf-lua").live_grep({
+                rg_glob=true,
+                no_esc=true
+            }) end,
             desc = "Grep files"
         },
         -- {
@@ -67,5 +73,11 @@ return {
             function() require("fzf-lua").builtin() end,
             desc = "Search all fuzzy finders"
         },
+        {
+            "<leader>sc",
+            function() require("fzf-lua").commands() end,
+            desc = "Search all fuzzy finders"
+        },
+
     }
 }

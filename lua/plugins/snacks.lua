@@ -22,6 +22,7 @@ return {
         },
         picker = {
             enabled = true,
+            hidden = true,
             sources = {
                 explorer = {
                     layout = {
@@ -41,5 +42,19 @@ return {
     },
     keys = {
         { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+        -- {
+        --     "<leader>bd",
+        --     function()
+        --         local exp = Snacks.picker.get({ source = "explorer" })[1]
+        --         if exp ~= nil and exp.closed ~= true then
+        --             exp:close()
+        --             vim.cmd("bd")
+        --         else
+        --             vim.cmd("bd")
+        --         end
+
+        --     end,
+        --     desc = "File Explorer"
+        -- },
     }
 }
