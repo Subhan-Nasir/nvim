@@ -51,6 +51,7 @@ vim.api.nvim_create_autocmd(
             vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action,
                 { buffer = ev.buf, desc = "Code actions" })
 
+
             vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "Go to definition" })
             vim.keymap.set("n", "<leader>gD", vim.lsp.buf.type_definition,
                 { buffer = ev.buf, desc = "Go to type definition" })
