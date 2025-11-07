@@ -56,18 +56,28 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 
-vim.api.nvim_create_autocmd("Filetype", {
-    pattern = { "*" },
-    callback = function()
-        -- vim.opt.formatoptions = vim.opt.formatoptions - "o"
-        if vim.bo["ft"] == "css" then
-            vim.opt_local.formatoptions:remove("r") -- don't enter comment leader on Enter in css files
-        end
-        vim.opt.formatoptions = vim.opt.formatoptions + {
-            o = false, -- Don't continue comments with o and O
-        }
-    end,
-    group = vim.api.nvim_create_augroup('NoAutoCommentLine', {}),
-    desc = "Don't continue comments with o and O",
+-- vim.api.nvim_create_autocmd("Filetype", {
+--     pattern = { "*" },
+--     callback = function()
+--         -- vim.opt.formatoptions = vim.opt.formatoptions - "o"
+--         if vim.bo["ft"] == "css" then
+--             vim.opt_local.formatoptions:remove("r") -- don't enter comment leader on Enter in css files
+--         end
+--         vim.opt.formatoptions = vim.opt.formatoptions + {
+--             o = false, -- Don't continue comments with o and O
+--         }
+--     end,
+--     group = vim.api.nvim_create_augroup('NoAutoCommentLine', {}),
+--     desc = "Don't continue comments with o and O",
+-- })
+
+ -- Don't continue comments on new line
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("no_auto_comment", {}),
+	callback = function()
+		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+	end,
+    desc = "Don't continue comments on new line"
 })
+
 
