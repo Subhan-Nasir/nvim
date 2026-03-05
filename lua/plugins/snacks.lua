@@ -1,6 +1,7 @@
 return {
     "folke/snacks.nvim",
     priority = 1000,
+    enabled = false,
     lazy = false,
     ---@type snacks.Config
     opts = {
@@ -19,6 +20,7 @@ return {
         words = { enabled = false },
         explorer = {
             enabled = true,
+            auto_hide = { "input" }
         },
         picker = {
             enabled = true,
@@ -28,7 +30,8 @@ return {
                     layout = {
                         layout = {
                             position = "left"
-                        }
+                        },
+                        auto_hide = { "input" }
                     },
                     follow_file = true,
                     tree = true,
@@ -41,7 +44,7 @@ return {
         },
     },
     keys = {
-        { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+        { "<leader>e", function() Snacks.explorer({auto_hide = {"input"}}) end, desc = "File Explorer" },
         -- {
         --     "<leader>bd",
         --     function()

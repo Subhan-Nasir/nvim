@@ -115,7 +115,9 @@ return {
             ts_ls = {
             },
             -- vtsls = {},
-            angularls = {},
+            angularls = {
+                filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "htmlangular" }
+            },
             lua_ls = {
                 -- cmd = { ... },
                 -- filetypes = { ... },
@@ -170,13 +172,43 @@ return {
                 -- }
             },
             cssls = {},
-            html = {}
+            html = {},
+            emmet_language_server = {}
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
             'stylua',
         })
+
+
+        vim.lsp.config("sourcekit", {
+            cmd = { 'sourcekit-lsp', },
+            filetypes = { 'swift' },
+            root_markers = {
+                '.git',
+                'compile_commands.json',
+                '.sourcekit-lsp',
+                'Package.swift',
+            },
+            capabilities = {
+                workspace = {
+                    didChangeWatchedFiles = {
+                        dynamicRegistration = true,
+                    },
+                },
+                textDocument = {
+                    diagnostic = {
+                        dynamicRegistration = true,
+                        relatedDocumentSupport = true,
+                    },
+                },
+            },
+        })
+        vim.lsp.enable("sourcekit")
+
+
+
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
         require('mason-lspconfig').setup {

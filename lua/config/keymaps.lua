@@ -34,6 +34,28 @@ vim.keymap.set({ "n", "v" }, "<leader>/", "gcc", { remap = true })
 -- Using `ggVG` adds an extra new line when pasting
 vim.keymap.set("n", "<leader>va", "G$vgg0", { desc = "Select entire file" })
 
+local function filterDuplicates(array)
+    local uniqueArray = {}
+    for _, tableA in ipairs(array) do
+        local isDuplicate = false
+        for _, tableB in ipairs(uniqueArray) do
+            if vim.deep_equal(tableA, tableB) then
+                isDuplicate = true
+                break
+            end
+        end
+        if not isDuplicate then
+            table.insert(uniqueArray, tableA)
+        end
+    end
+    return uniqueArray
+end
+
+local function on_list(options)
+    options.items = filterDuplicates(options.items)
+    vim.fn.setqflist({}, ' ', options)
+    vim.cmd('botright copen')
+end
 
 
 
@@ -57,7 +79,7 @@ vim.api.nvim_create_autocmd(
                 { buffer = ev.buf, desc = "Go to type definition" })
             vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation,
                 { buffer = ev.buf, desc = "Go to implementation" })
-            vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { buffer = ev.buf, desc = "Go to references" })
+            vim.keymap.set("n", "<leader>gr", function() vim.lsp.buf.references(nil, { on_list = on_list }) end, { buffer = ev.buf, desc = "Go to references" })
 
             vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Hover" })
             vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename variable" })
