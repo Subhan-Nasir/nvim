@@ -2,6 +2,12 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Recommended sessionoptions for auto-session: ensures cwd, folds, terminal
+-- and window layout are all persisted correctly
+vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+
+vim.cmd("colorscheme retrobox")
+
 vim.opt.termguicolors = true
 vim.g.have_nerd_font = true
 

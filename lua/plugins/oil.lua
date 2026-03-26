@@ -1,6 +1,9 @@
 return {
     {
         'stevearc/oil.nvim',
+        -- lazy = false is required for default_file_explorer to intercept `nvim .`
+        -- (the plugin itself warns that lazy loading is tricky to get right)
+        lazy = false,
         cmd = "Oil",
         ---@module 'oil'
         ---@type oil.SetupOpts

@@ -7,11 +7,17 @@ return {
     ---@module "auto-session"
     ---@type AutoSession.Config
     opts = {
-        no_restore_cmds = {
+        close_filetypes_on_save = { 'oil', 'checkhealth' },
+
+        pre_restore_cmds = {
             function()
-                -- load oil in case we're launching with a dir arg and there's no session
-                require('oil')
+                for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                    if vim.bo[buf].filetype == 'oil' then
+                        vim.api.nvim_buf_delete(buf, { force = true })
+                    end
+                end
             end,
         },
+        no_restore_cmds = {},
     },
 }

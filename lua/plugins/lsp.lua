@@ -112,8 +112,7 @@ return {
 
         local servers = {
 
-            ts_ls = {
-            },
+            -- ts_ls = {},
             -- vtsls = {},
             angularls = {
                 filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "htmlangular" }
@@ -173,7 +172,8 @@ return {
             },
             cssls = {},
             html = {},
-            emmet_language_server = {}
+            emmet_language_server = {},
+            shfmt = {}
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})
