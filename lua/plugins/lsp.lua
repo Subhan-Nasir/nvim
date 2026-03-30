@@ -173,6 +173,7 @@ return {
             cssls = {},
             html = {},
             emmet_language_server = {},
+            -- emmet_ls = {},
             shfmt = {}
         }
 

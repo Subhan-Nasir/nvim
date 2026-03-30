@@ -7,7 +7,7 @@ return {
     ---@module "auto-session"
     ---@type AutoSession.Config
     opts = {
-        close_filetypes_on_save = { 'oil', 'checkhealth' },
+        close_filetypes_on_save = { 'oil', 'checkhealth', 'NvimTree' },
 
         pre_restore_cmds = {
             function()
@@ -18,6 +18,17 @@ return {
                 end
             end,
         },
-        no_restore_cmds = {},
+        post_restore_cmds = {
+            function()
+                require('nvim-tree.api').tree.open()
+                vim.cmd('wincmd p')
+            end,
+        },
+        no_restore_cmds = {
+            function()
+                require('nvim-tree.api').tree.open()
+                vim.cmd('wincmd p')
+            end,
+        },
     },
 }

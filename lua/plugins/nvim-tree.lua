@@ -98,6 +98,15 @@ return {
             },
         })
 
+        -- -- Open nvim-tree on startup
+        -- vim.api.nvim_create_autocmd("VimEnter", {
+        --     callback = function()
+        --         require("nvim-tree.api").tree.open()
+        --         -- Move focus back to buffer
+        --         vim.cmd("wincmd p")
+        --     end,
+        -- })
+
         -- When a quickfix window closes, prevent nvim-tree from stealing focus
         vim.api.nvim_create_autocmd('WinClosed', {
           callback = function(e)
@@ -135,7 +144,8 @@ return {
 
             -- We want to quit and only one window besides tree is left
             if e.event == 'QuitPre' and winCount == 2 then
-              vim.api.nvim_cmd({cmd = 'qall'}, {})
+            --   vim.api.nvim_cmd({cmd = 'qall'}, {})
+              tree.close()
             end
 
             -- :bd was probably issued an only tree window is left
