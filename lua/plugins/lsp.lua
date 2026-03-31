@@ -4,10 +4,9 @@ return {
         { 'mason-org/mason.nvim', opts = {} },
         'mason-org/mason-lspconfig.nvim',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
-
         { 'j-hui/fidget.nvim',    opts = {} },
-
         'saghen/blink.cmp',
+        "b0o/schemastore.nvim",
     },
     config = function()
         vim.api.nvim_create_autocmd('LspAttach', {
@@ -110,8 +109,8 @@ return {
 
         local capabilities = require('blink.cmp').get_lsp_capabilities()
 
+         -- Managed by Mason
         local servers = {
-
             -- ts_ls = {},
             -- vtsls = {},
             angularls = {
@@ -128,53 +127,38 @@ return {
                         },
                         runtime = {
                             version = 'LuaJIT',
-                        }
+                        },
                         -- toggle to ignore `missing-fields` warnings
                         -- diagnostics = { disable = { 'missing-fields' } },
+                        diagnostics = {
+                            globals = {
+                                "vim"
+                            }
+                        }
                     },
                 },
             },
             svelte = {},
             bashls = {},
-            jsonls = {
-                filetypes = {"json", "jsonc"},
-                -- settings = {
-                --     json = {
-                --         -- Schemas https://www.schemastore.org
-                --         schemas = {
-                --             {
-                --                 fileMatch = {"package.json"},
-                --                 url = "https://json.schemastore.org/package.json"
-                --             },
-                --             {
-                --                 fileMatch = {"tsconfig*.json"},
-                --                 url = "https://json.schemastore.org/tsconfig.json"
-                --             },
-                --             {
-                --                 fileMatch = {
-                --                     ".prettierrc",
-                --                     ".prettierrc.json",
-                --                     "prettier.config.json"
-                --                 },
-                --                 url = "https://json.schemastore.org/prettierrc.json"
-                --             },
-                --             {
-                --                 fileMatch = {".eslintrc", ".eslintrc.json"},
-                --                 url = "https://json.schemastore.org/eslintrc.json"
-                --             },
-                --             {
-                --                 fileMatch = {".babelrc", ".babelrc.json", "babel.config.json"},
-                --                 url = "https://json.schemastore.org/babelrc.json"
-                --             }
-                --         }
-                --     }
-                -- }
-            },
             cssls = {},
             html = {},
             emmet_language_server = {},
             -- emmet_ls = {},
-            shfmt = {}
+            shfmt = {},
+            jsonls = {
+                settings = {
+                    json = {
+                        schemas = require("schemastore").json.schemas({
+                            select = {
+                                "package.json",
+                                "tsconfig.json",
+                                "angular.json"
+                            }
+                        }),
+                        validate = { enable = true },
+                    },
+                },
+            }
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})
@@ -182,7 +166,29 @@ return {
             'stylua',
         })
 
+        vim.lsp.config('*', { capabilities = capabilities })
+        for server, config in pairs(servers) do
+            if next(config) then
+                vim.lsp.config(server, config)
+            end
+        end
 
+        require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+        require('mason-lspconfig').setup {
+            ensure_installed = {},
+            automatic_installation = false,
+            automatic_enable = true,
+            -- handlers = {
+            --     function(server_name)
+            --         local server = servers[server_name] or {}
+            --         server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            --         require('lspconfig')[server_name].setup(server)
+            --     end,
+            -- },
+        }
+
+
+        -- Not managed by Mason
         vim.lsp.config("sourcekit", {
             cmd = { 'sourcekit-lsp', },
             filetypes = { 'swift' },
@@ -208,21 +214,5 @@ return {
         })
         vim.lsp.enable("sourcekit")
 
-
-
-        require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
-        require('mason-lspconfig').setup {
-            ensure_installed = {},
-            automatic_installation = false,
-            automatic_enable = true,
-            handlers = {
-                function(server_name)
-                    local server = servers[server_name] or {}
-                    server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-                    require('lspconfig')[server_name].setup(server)
-                end,
-            },
-        }
     end,
 }
