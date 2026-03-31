@@ -32,7 +32,7 @@ return {
             },
         },
         sources = {
-            default = { "lazydev", "lsp", "path", "snippets" },
+            default = { "lazydev", "lsp", "path", "snippets", "buffer" },
             providers = {
                 lazydev = {
                     name = "LazyDev",
@@ -50,6 +50,10 @@ return {
                 path = {
                     min_keyword_length = 2,
                 },
+                buffer = {
+                    min_keyword_length = 4,
+                    score_offset = -20
+                }
             },
         },
         fuzzy = { implementation = "prefer_rust_with_warning" }

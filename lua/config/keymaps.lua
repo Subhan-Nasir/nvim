@@ -34,6 +34,8 @@ vim.keymap.set({ "n", "v" }, "<leader>/", "gcc", { remap = true })
 -- Using `ggVG` adds an extra new line when pasting
 vim.keymap.set("n", "<leader>va", "G$vgg0", { desc = "Select entire file" })
 
+vim.keymap.set("n", "<Esc>", ":noh<CR>")
+
 local function filterDuplicates(array)
     local uniqueArray = {}
     for _, tableA in ipairs(array) do

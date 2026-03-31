@@ -3,8 +3,10 @@ return {
     config = function()
         require("nvim-eslint").setup({
             settings = {
+                format = true,
                 experimental = {
-                    use_flat_config = true
+                    -- use_flat_config = true
+                    useFlatConfig = true
                 }
             }
         })

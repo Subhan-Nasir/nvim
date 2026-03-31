@@ -26,7 +26,7 @@ vim.opt.breakindent = true
 
 vim.opt.backspace = { "start", "eol", "indent" }
 
-vim.opt.winborder = "single"
+-- vim.opt.winborder = "single"
 
 
 vim.opt.cursorline = true
@@ -39,6 +39,7 @@ vim.opt.splitright = true
 
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- vim.cmd.highlight('IndentLine guifg=#636363')
 vim.cmd.highlight('IndentLine guifg=#4e4e4e')
@@ -46,12 +47,12 @@ vim.cmd.highlight('IndentLineCurrent guifg=#D3D3D3')
 
 -- vim.opt.list = true
 
-vim.diagnostic.config({
-    virtual_text = true,
-    underline = true
-})
+-- vim.diagnostic.config({
+--     virtual_text = true,
+--     underline = true
+-- })
 
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+-- vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     group = vim.api.nvim_create_augroup('highlight_yank', {}),
