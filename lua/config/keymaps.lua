@@ -4,6 +4,8 @@ vim.keymap.set('i', '<a-BS>', '<C-W>', { noremap = true })
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
+vim.cmd("command! W w")
+
 -- Move selection up and down
 vim.keymap.set("n", "<s-j>", ":m .+1<CR>==")     -- move line up(n)
 vim.keymap.set("n", "<s-k>", ":m .-2<CR>==")     -- move line down(n)
@@ -34,7 +36,7 @@ vim.keymap.set({ "n", "v" }, "<leader>/", "gcc", { remap = true })
 -- Using `ggVG` adds an extra new line when pasting
 vim.keymap.set("n", "<leader>va", "G$vgg0", { desc = "Select entire file" })
 
-vim.keymap.set("n", "<Esc>", ":noh<CR>")
+vim.keymap.set("n", "<Esc>", ":noh<CR>", { silent = true })
 
 local function filterDuplicates(array)
     local uniqueArray = {}

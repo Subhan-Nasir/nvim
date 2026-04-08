@@ -40,7 +40,7 @@ return {
                 timeout = 500,
             },
             view = {
-                width = 45,
+                width = 50,
                 side = "left",
                 -- mappings = {
                 --     custom_only = false,

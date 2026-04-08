@@ -9,7 +9,7 @@ return {
             ["<Tab>"] = { "accept", "fallback" },
             ["<a-j>"] = { "select_next", "fallback" },
             ["<a-k>"] = { "select_prev", "fallback" },
-            ["<C-Space>"] = { "show" },
+            ["<C-Space>"] = { "show", "fallback" },
             ["<C-e>"] = { "hide" },
         },
         -- highlight = {
@@ -30,6 +30,11 @@ return {
                 auto_show = true,
                 auto_show_delay_ms = 500,
             },
+            accept = {
+                auto_brackets = {
+                    enabled = true
+                }
+            }
         },
         sources = {
             default = { "lazydev", "lsp", "path", "snippets", "buffer" },
@@ -41,17 +46,25 @@ return {
                 },
                 lsp = {
                     score_offset = 50,
-                    min_keyword_length = 2,
+                    min_keyword_length = function(ctx)
+                        return ctx.trigger.kind == 'manual' and 0 or 1
+                    end,
                 },
                 snippets = {
-                    min_keyword_length = 3,
+                    min_keyword_length = function(ctx)
+                        return ctx.trigger.kind == 'manual' and 0 or 3
+                    end,
                     score_offset = -10,
                 },
                 path = {
-                    min_keyword_length = 2,
+                    min_keyword_length = function(ctx)
+                        return ctx.trigger.kind == 'manual' and 0 or 2
+                    end,
                 },
                 buffer = {
-                    min_keyword_length = 4,
+                    min_keyword_length = function(ctx)
+                        return ctx.trigger.kind == 'manual' and 0 or 4
+                    end,
                     score_offset = -20
                 }
             },

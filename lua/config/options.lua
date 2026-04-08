@@ -11,6 +11,8 @@ vim.cmd("colorscheme retrobox")
 vim.opt.termguicolors = true
 vim.g.have_nerd_font = true
 
+vim.opt.title = true
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
@@ -89,3 +91,10 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 
+vim.opt.fillchars = vim.opt.fillchars + 'diff:╱'
+
+
+vim.api.nvim_set_hl(0, 'DiffAdd',    { bg = '#182c47' })
+vim.api.nvim_set_hl(0, 'DiffChange', { bg = '#21242d' })
+vim.api.nvim_set_hl(0, 'DiffDelete', { bg = '#372721', fg = '#4a4a4a' })
+vim.api.nvim_set_hl(0, 'DiffText',   { bg = '#265390' })
