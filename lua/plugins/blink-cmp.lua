@@ -32,7 +32,13 @@ return {
             },
             accept = {
                 auto_brackets = {
-                    enabled = true
+                    enabled = true,
+                    override_brackets_for_filetypes = {
+                        css = { "", "" },
+                        scss = { "", "" },
+                        less = { "", "" },
+                    },
+
                 }
             }
         },

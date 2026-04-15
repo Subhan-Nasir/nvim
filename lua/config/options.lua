@@ -4,7 +4,8 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Recommended sessionoptions for auto-session: ensures cwd, folds, terminal
 -- and window layout are all persisted correctly
-vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+-- vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions'
 
 vim.cmd("colorscheme retrobox")
 
@@ -46,6 +47,8 @@ vim.opt.smartcase = true
 -- vim.cmd.highlight('IndentLine guifg=#636363')
 vim.cmd.highlight('IndentLine guifg=#4e4e4e')
 vim.cmd.highlight('IndentLineCurrent guifg=#D3D3D3')
+
+vim.api.nvim_set_hl(0, "Visual", { bg = "#3b3261", fg = "NONE" })
 
 -- vim.opt.list = true
 
