@@ -7,7 +7,7 @@ vim.g.loaded_netrwPlugin = 1
 -- vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions'
 
-vim.cmd("colorscheme retrobox")
+-- vim.cmd("colorscheme retrobox")
 
 vim.opt.termguicolors = true
 vim.g.have_nerd_font = true
