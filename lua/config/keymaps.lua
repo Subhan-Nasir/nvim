@@ -11,8 +11,8 @@ vim.keymap.set("n", "<s-j>", ":m .+1<CR>==")     -- move line up(n)
 vim.keymap.set("n", "<s-k>", ":m .-2<CR>==")     -- move line down(n)
 vim.keymap.set("v", "<s-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
 vim.keymap.set("v", "<s-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
-
 -- Resize with arrow keys
+
 vim.keymap.set("n", "<C-s-Up>", ":resize +2<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "<C-s-Down>", ":resize -2<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "<C-s-Left>", ":vertical resize -2<CR>", {noremap = true, silent = true})
@@ -85,7 +85,17 @@ vim.api.nvim_create_autocmd(
             vim.keymap.set("n", "<leader>gr", function() vim.lsp.buf.references(nil, { on_list = on_list }) end, { buffer = ev.buf, desc = "Go to references" })
 
             vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Hover" })
-            vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename variable" })
+
+            -- vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename variable" })
+            vim.keymap.set("n", "<leader>cr", function()
+                local has_angularls = #vim.lsp.get_clients({ bufnr = ev.buf, name = "angularls" }) > 0
+                if has_angularls then
+                    vim.lsp.buf.rename(nil, { filter = function(c) return c.name == "angularls" end })
+                else
+                    vim.lsp.buf.rename()
+                end
+            end, { buffer = ev.buf, desc = "Rename variable" })
+
 
             vim.keymap.set({ "n", "v" }, "<leader>cf",
                 function()

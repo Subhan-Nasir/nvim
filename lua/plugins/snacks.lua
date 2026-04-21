@@ -1,7 +1,7 @@
 return {
     "folke/snacks.nvim",
     priority = 1000,
-    enabled = false,
+    enabled = true,
     lazy = false,
     ---@type snacks.Config
     opts = {
@@ -11,7 +11,9 @@ return {
         bigfile = { enabled = false },
         dashboard = { enabled = false },
         indent = { enabled = false },
-        input = { enabled = true },
+        input = {
+            enabled = true,
+        },
         notifier = { enabled = false },
         quickfile = { enabled = false },
         scope = { enabled = false },
@@ -19,11 +21,11 @@ return {
         statuscolumn = { enabled = false },
         words = { enabled = false },
         explorer = {
-            enabled = true,
+            enabled = false,
             auto_hide = { "input" }
         },
         picker = {
-            enabled = true,
+            enabled = false,
             hidden = true,
             sources = {
                 explorer = {
@@ -43,21 +45,21 @@ return {
             }
         },
     },
-    keys = {
-        { "<leader>e", function() Snacks.explorer({auto_hide = {"input"}}) end, desc = "File Explorer" },
-        -- {
-        --     "<leader>bd",
-        --     function()
-        --         local exp = Snacks.picker.get({ source = "explorer" })[1]
-        --         if exp ~= nil and exp.closed ~= true then
-        --             exp:close()
-        --             vim.cmd("bd")
-        --         else
-        --             vim.cmd("bd")
-        --         end
+    -- keys = {
+    --     { "<leader>e", function() Snacks.explorer({auto_hide = {"input"}}) end, desc = "File Explorer" },
+    --     -- {
+    --     --     "<leader>bd",
+    --     --     function()
+    --     --         local exp = Snacks.picker.get({ source = "explorer" })[1]
+    --     --         if exp ~= nil and exp.closed ~= true then
+    --     --             exp:close()
+    --     --             vim.cmd("bd")
+    --     --         else
+    --     --             vim.cmd("bd")
+    --     --         end
 
-        --     end,
-        --     desc = "File Explorer"
-        -- },
-    }
+    --     --     end,
+    --     --     desc = "File Explorer"
+    --     -- },
+    -- }
 }
