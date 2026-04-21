@@ -1,0 +1,23 @@
+{
+    "Print to console": {
+        "prefix": "cl",
+        "body": [
+            "console.log($1);$2"
+        ],
+        "description": "Log output to console"
+    },
+    "Print backtick string to console": {
+        "prefix": "clb",
+        "body": [
+            "console.log(`$1`);$2"
+        ],
+        "description": "Log output to console"
+    },
+    "Print double quote string to console": {
+        "prefix": "clq",
+        "body": [
+            "console.log(\"$1\");$2"
+        ],
+        "description": "Log output to console"
+    }
+}

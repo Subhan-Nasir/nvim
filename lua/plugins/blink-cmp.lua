@@ -6,7 +6,8 @@ return {
         keymap = {
             preset = "enter",
             ["<CR>"] = { "accept", "fallback" },
-            ["<Tab>"] = { "accept", "fallback" },
+            ["<Tab>"] = { "snippet_forward", "accept", "fallback" },
+            ["<S-Tab>"] = { "snippet_backward", "fallback" },
             ["<a-j>"] = { "select_next", "fallback" },
             ["<a-k>"] = { "select_prev", "fallback" },
             ["<C-Space>"] = { "show", "fallback" },
@@ -58,9 +59,9 @@ return {
                 },
                 snippets = {
                     min_keyword_length = function(ctx)
-                        return ctx.trigger.kind == 'manual' and 0 or 3
+                        return ctx.trigger.kind == 'manual' and 0 or 2
                     end,
-                    score_offset = -10,
+                    score_offset = 200,
                 },
                 path = {
                     min_keyword_length = function(ctx)
