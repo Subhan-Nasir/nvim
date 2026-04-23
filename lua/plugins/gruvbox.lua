@@ -6,12 +6,20 @@ return {
         require("gruvbox").setup({
             terminal_colors = true,
             contrast = "hard",
+            bold = false,
+            italic = {
+                strings = false,
+                emphasis = false,
+                comments = false,
+                operators = false,
+                folds = false,
+            },
             transparent_mode = false,
             overrides = {
                 SignColumn = { bg = "NONE" },
-                CursorLineNr = {bg = "NONE"},
-                WinSeparator = {fg = "#363636"}
-            }
+                CursorLineNr = { bg = "NONE" },
+                WinSeparator = { fg = "#363636" },
+            },
         })
         vim.cmd([[colorscheme gruvbox]])
     end,
