@@ -9,7 +9,15 @@ return {
     event = "VeryLazy",
     config = function()
         require("fzf-lua").register_ui_select()
+
+        vim.api.nvim_set_hl(0, "FzfLuaTitle", { fg = "#1d2021", bg = "#f38ba8", bold = true })
+        vim.api.nvim_set_hl(0, "FzfLuaPreviewTitle", { fg = "#1d2021", bg = "#a6e3a1", bold = true })
+        vim.api.nvim_set_hl(0, "FzfLuaFzfPrompt", { fg = "#f38ba8" })
+
         require("fzf-lua").setup({
+            fzf_opts = {
+                ["--padding"] = "2,0",
+            },
             winopts = {
                 -- border = "bold",
                 border = "solid",
@@ -18,6 +26,7 @@ return {
                     horizontal = "right:50%",
                     -- border = "bold"
                     border = "solid",
+                    title_pos = "center",
                 },
             },
             keymap = {
