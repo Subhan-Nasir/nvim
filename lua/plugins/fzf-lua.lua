@@ -13,6 +13,8 @@ return {
         vim.api.nvim_set_hl(0, "FzfLuaTitle", { fg = "#1d2021", bg = "#f38ba8", bold = true })
         vim.api.nvim_set_hl(0, "FzfLuaPreviewTitle", { fg = "#1d2021", bg = "#a6e3a1", bold = true })
         vim.api.nvim_set_hl(0, "FzfLuaFzfPrompt", { fg = "#f38ba8" })
+        vim.api.nvim_set_hl(0, "FzfLuaPreviewNormal", { bg = "#282828" })
+        vim.api.nvim_set_hl(0, "FzfLuaPreviewBorder", { fg = "#282828", bg = "#282828" })
 
         require("fzf-lua").setup({
             fzf_opts = {
@@ -23,7 +25,7 @@ return {
                 border = "solid",
                 width = 0.90,
                 preview = {
-                    horizontal = "right:50%",
+                    horizontal = "right:60%",
                     -- border = "bold"
                     border = "solid",
                     title_pos = "center",
