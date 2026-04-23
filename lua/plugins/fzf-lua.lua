@@ -70,11 +70,6 @@ return {
             mode = "n",
             desc = "Grep files",
         },
-        -- {
-        --     "<leader>sb",
-        --     function() require("fzf-lua").buffers() end,
-        --     desc = "Find buffer"
-        -- },
         {
             "<leader>t",
             function()
@@ -128,7 +123,7 @@ return {
             function()
                 require("fzf-lua").commands()
             end,
-            desc = "Search all fuzzy finders",
+            desc = "Search all commands",
         },
     },
 }

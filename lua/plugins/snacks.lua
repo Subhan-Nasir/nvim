@@ -26,7 +26,18 @@ return {
         },
         picker = {
             enabled = false,
-            hidden = true,
+            win = {
+                input = {
+                    keys = {
+                        ["<a-j>"] = { "list_down", mode = { "i", "n" } },
+                        ["<a-k>"] = { "list_up", mode = { "i", "n" } },
+                        -- Iterm2 sends `a-b`/`a-f` on `option-left`/`option-right`
+                        -- ["<a-BS>"] = { function() vim.api.nvim_input("<C-w>") end, mode = { "i" } },
+                        -- ["<a-b>"] = { function() vim.api.nvim_input("<C-Left>") end, mode = { "i" } },
+                        -- ["<a-f>"] = { function() vim.api.nvim_input("<C-Right>") end, mode = { "i" } },
+                    },
+                },
+            },
             sources = {
                 explorer = {
                     layout = {
@@ -46,20 +57,104 @@ return {
         },
     },
     -- keys = {
-    --     { "<leader>e", function() Snacks.explorer({auto_hide = {"input"}}) end, desc = "File Explorer" },
-    --     -- {
-    --     --     "<leader>bd",
-    --     --     function()
-    --     --         local exp = Snacks.picker.get({ source = "explorer" })[1]
-    --     --         if exp ~= nil and exp.closed ~= true then
-    --     --             exp:close()
-    --     --             vim.cmd("bd")
-    --     --         else
-    --     --             vim.cmd("bd")
-    --     --         end
+    --     {
+    --         "<leader>sf",
+    --         function()
+    --             Snacks.picker.files()
+    --         end,
+    --         desc = "Find files"
+    --     },
+    --     {
+    --         "<leader>sg",
+    --         function()
+    --             Snacks.picker.grep()
+    --         end,
+    --         mode = {"n"},
+    --         desc = "Grep files",
+    --     },
+    --     {
+    --         "<leader>sg",
+    --         function()
+    --             Snacks.picker.grep_word()
+    --         end,
+    --         desc = "Grep visual selection",
+    --         mode = { "v" }
+    --     },
+    --     {
+    --         "<leader>t",
+    --         function()
+    --             Snacks.picker.buffers()
+    --         end,
+    --         desc = "Find buffer",
+    --     },
+    --     {
+    --         "<leader>sl",
+    --         function()
 
-    --     --     end,
-    --     --     desc = "File Explorer"
-    --     -- },
+    --             ---@type snacks.picker.lines.Config
+    --             local picker_config = {
+    --                 layout = {
+    --                     preset = "dropdown",
+    --                     layout = {
+    --                         height = 0.4
+    --                     },
+    --                 },
+    --             }
+
+    --             local utils = require("config.utils")
+    --             local selection = utils.get_visual_selection()[1]
+
+    --             if selection and selection ~= "" then
+    --                 picker_config.search = selection
+    --             end
+
+    --             Snacks.picker.lines(picker_config)
+    --         end,
+    --         mode = {"v"},
+    --         desc = "Live grep current buffer",
+    --     },
+    --     {
+    --         "<leader>sl",
+    --         function()
+    --             Snacks.picker.lines({
+    --                 layout = {
+    --                     preset = "dropdown",
+    --                     layout = {
+    --                         height = 0.4
+    --                     },
+    --                 },
+    --             })
+    --         end,
+    --         mode = {"n"},
+    --         desc = "Live grep current buffer",
+    --     },
+    --     {
+    --         "<leader>ss",
+    --         function()
+    --             Snacks.picker.lsp_symbols()
+    --         end,
+    --         desc = "Find symbol in document",
+    --     },
+    --     {
+    --         "<leader>sw",
+    --         function()
+    --             Snacks.picker.lsp_workspace_symbols()
+    --         end,
+    --         desc = "Find symbol in workspace",
+    --     },
+    --     {
+    --         "<leader>sz",
+    --         function()
+    --             Snacks.picker.pickers()
+    --         end,
+    --         desc = "Search all fuzzy finders",
+    --     },
+    --     {
+    --         "<leader>sc",
+    --         function()
+    --             Snacks.picker.commands()
+    --         end,
+    --         desc = "Search all commands",
+    --     }
     -- }
 }
