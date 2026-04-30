@@ -58,10 +58,11 @@ return {
                     end,
                 },
                 snippets = {
-                    min_keyword_length = function(ctx)
-                        return ctx.trigger.kind == 'manual' and 0 or 2
-                    end,
-                    score_offset = 200,
+                    -- min_keyword_length = function(ctx)
+                    --     return ctx.trigger.kind == 'manual' and 0 or 2
+                    -- end,
+                    min_keyword_length = 2,
+                    score_offset = 100,
                 },
                 path = {
                     min_keyword_length = function(ctx)

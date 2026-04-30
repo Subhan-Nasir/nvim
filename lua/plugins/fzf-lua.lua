@@ -20,10 +20,14 @@ return {
             fzf_opts = {
                 ["--padding"] = "2,0",
             },
+            -- fzf_colors = true,
+            fzf_colors = {
+                ["gutter"] = "#1d2021"
+            },
             winopts = {
                 -- border = "bold",
                 border = "solid",
-                width = 0.90,
+                width = 0.75,
                 preview = {
                     horizontal = "right:60%",
                     -- border = "bold"
