@@ -7,7 +7,7 @@ return {
         }
     },
     keys = {
-        { "n", "<leader>D", "<cmd>DiffviewToggle<cr>" },
+        { "<leader>D", "<cmd>DiffviewToggle<cr>", mode = {"n"}, desc = "Toggle Diffview" },
     },
     -- optional: lazy-load on command
     -- cmd = {
