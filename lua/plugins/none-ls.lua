@@ -103,14 +103,15 @@ return {
                         table.insert(actions, {
                             title = "Replace all unicode substitutions",
                             action = function()
-                                local new_lines = {}
-                                for _, line in ipairs(params.content) do
+                                for i, line in ipairs(params.content) do
+                                    local new_line = line
                                     for _, sub in ipairs(substitutions) do
-                                        line = line:gsub(sub.pat, sub.rep)
+                                        new_line = new_line:gsub(sub.pat, sub.rep)
                                     end
-                                    table.insert(new_lines, line)
+                                    if new_line ~= line then
+                                        vim.api.nvim_buf_set_lines(params.bufnr, i - 1, i, false, { new_line })
+                                    end
                                 end
-                                vim.api.nvim_buf_set_lines(params.bufnr, 0, -1, false, new_lines)
                             end,
                         })
                     end
