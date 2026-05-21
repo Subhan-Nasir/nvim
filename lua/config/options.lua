@@ -34,7 +34,7 @@ vim.opt.backspace = { "start", "eol", "indent" }
 
 vim.opt.cursorline = true
 
-vim.opt.scrolloff = 5
+vim.opt.scrolloff = 3
 
 
 vim.opt.splitbelow = true

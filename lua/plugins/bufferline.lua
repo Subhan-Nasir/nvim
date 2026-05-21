@@ -5,8 +5,10 @@ return {
         'nvim-tree/nvim-web-devicons',
     },
     config = function()
+        local bufferline = require("bufferline")
         require('bufferline').setup {
             options = {
+                style_preset = bufferline.style_preset.minimal, -- or bufferline.style_preset.minimal,
                 mode = 'buffers', -- set to "tabs" to only show tabpages instead
                 themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
                 numbers = 'none', -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
@@ -20,20 +22,22 @@ return {
                 max_name_length = 30,
                 max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
                 tab_size = 21,
-                diagnostics = true,
+                diagnostics = "nvim_lsp",
                 diagnostics_update_in_insert = false,
+                diagnostics_update_on_event = true,
                 color_icons = true,
                 show_buffer_icons = true,
                 show_buffer_close_icons = true,
                 show_close_icon = true,
                 persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-                separator_style = { '│', '│' }, -- | "thick" | "thin" | { 'any', 'any' },
+                -- separator_style = { '│', '│' }, -- | "thick" | "thin" | { 'any', 'any' },
+                separator_style = "thin",
                 enforce_regular_tabs = true,
                 always_show_bufferline = true,
                 show_tab_indicators = false,
                 indicator = {
                     -- icon = '▎', -- this should be omitted if indicator style is not 'icon'
-                    style = 'none', -- Options: 'icon', 'underline', 'none'
+                    style = 'underline', -- Options: 'icon', 'underline', 'none'
                 },
                 icon_pinned = '󰐃',
                 minimum_padding = 1,

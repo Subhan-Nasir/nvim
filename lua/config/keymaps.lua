@@ -160,4 +160,4 @@ local function bufremove(buf)
     end
 end
 
-vim.keymap.set("n", "<leader>bd", bufremove, { desc = "Delete Buffer (without breaking file explorer)" })
+vim.keymap.set("n", "<leader>q", bufremove, { desc = "Delete Buffer (without breaking file explorer)" })

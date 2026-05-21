@@ -10,7 +10,12 @@ return {
         -- refer to the configuration section below
         bigfile = { enabled = false },
         dashboard = { enabled = false },
-        indent = { enabled = false },
+        indent = {
+            enabled = true,
+            animate = {
+                enabled = false,
+            },
+        },
         input = {
             enabled = true,
         },
@@ -22,7 +27,7 @@ return {
         words = { enabled = false },
         explorer = {
             enabled = false,
-            auto_hide = { "input" }
+            auto_hide = { "input" },
         },
         picker = {
             enabled = false,
@@ -42,18 +47,18 @@ return {
                 explorer = {
                     layout = {
                         layout = {
-                            position = "left"
+                            position = "left",
                         },
-                        auto_hide = { "input" }
+                        auto_hide = { "input" },
                     },
                     follow_file = true,
                     tree = true,
                     focus = "list",
                     enter = false,
                     replace_netrw = true,
-                    auto_close = false
-                }
-            }
+                    auto_close = false,
+                },
+            },
         },
     },
     -- keys = {
