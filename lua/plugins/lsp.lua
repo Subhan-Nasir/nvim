@@ -190,15 +190,17 @@ return {
 
         -- Not managed by Mason
         vim.lsp.config("sourcekit", {
-            cmd = { 'sourcekit-lsp', },
+            cmd = { 'sourcekit-lsp' },
             filetypes = { 'swift' },
+            -- Package.swift first so the LSP roots to the SwiftPM project, not a parent .git
             root_markers = {
-                '.git',
-                'compile_commands.json',
-                '.sourcekit-lsp',
                 'Package.swift',
+                '.sourcekit-lsp',
+                'compile_commands.json',
+                '.git',
             },
-            capabilities = {
+            -- Merge with blink.cmp capabilities so neither set overwrites the other
+            capabilities = vim.tbl_deep_extend('force', capabilities, {
                 workspace = {
                     didChangeWatchedFiles = {
                         dynamicRegistration = true,
@@ -209,6 +211,14 @@ return {
                         dynamicRegistration = true,
                         relatedDocumentSupport = true,
                     },
+                },
+            }),
+            settings = {
+                ["sourcekit-lsp"] = {
+                    -- Re-indexes edited dependencies (swift package edit --path) live
+                    backgroundIndexing = true,
+                    -- Never use Xcode build system
+                    defaultWorkspaceType = "swiftPM",
                 },
             },
         })
