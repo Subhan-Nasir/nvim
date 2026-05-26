@@ -2,6 +2,8 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.opt.backupcopy = "yes"
+
 -- Recommended sessionoptions for auto-session: ensures cwd, folds, terminal
 -- and window layout are all persisted correctly
 -- vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
