@@ -34,12 +34,7 @@ return {
             accept = {
                 auto_brackets = {
                     enabled = true,
-                    override_brackets_for_filetypes = {
-                        css = { "", "" },
-                        scss = { "", "" },
-                        less = { "", "" },
-                    },
-
+                    blocked_filetypes = { "css", "scss", "less" },
                 }
             }
         },

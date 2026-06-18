@@ -141,6 +141,7 @@ return {
             svelte = {},
             bashls = {},
             cssls = {},
+            cssmodules_ls = {},
             html = {},
             emmet_language_server = {},
             -- emmet_ls = {},

@@ -4,7 +4,6 @@ return {
         build = ":TSUpdate",
         config = function ()
             local configs = require("nvim-treesitter.configs")
-
             configs.setup({
                 ensure_installed = { "lua", "javascript", "typescript", "html", "css", "scss", "angular", "svelte", "python", "bash", "json", "swift" },
                 sync_install = false,

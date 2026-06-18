@@ -2,11 +2,11 @@ return {
     {
         "devswiftzone/swift.nvim",
         ft = "swift",
+        enabled = false,
         config = function()
             require("swift").setup({
                 enabled = true,
                 features = {
-
                     -- LSP Integration
                     lsp = {
                         enabled = false,
@@ -21,11 +21,9 @@ return {
                         filetypes = { "swift" },
                         settings = {},
                     },
-                    
                     linter = {
                         enabled = false
                     }
-                    
                 },
             })
         end,
