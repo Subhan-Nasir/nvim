@@ -195,10 +195,10 @@ return {
             filetypes = { 'swift' },
             -- Package.swift first so the LSP roots to the SwiftPM project, not a parent .git
             root_markers = {
-                'Package.swift',
-                '.sourcekit-lsp',
-                'compile_commands.json',
                 '.git',
+                'compile_commands.json',
+                '.sourcekit-lsp',
+                'Package.swift',
             },
             -- Merge with blink.cmp capabilities so neither set overwrites the other
             capabilities = vim.tbl_deep_extend('force', capabilities, {

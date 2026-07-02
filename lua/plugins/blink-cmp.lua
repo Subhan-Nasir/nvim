@@ -23,7 +23,10 @@ return {
             ghost_text = { enabled = false },
             -- Only auto-select when there is one unambiguous match
             list = { selection = { preselect = true, auto_insert = false } },
-            trigger = { show_on_keyword = true, show_on_trigger_character = true },
+            trigger = {
+                show_on_keyword = true,
+                show_on_trigger_character = true
+            },
             menu = {
                 auto_show = true,
             },

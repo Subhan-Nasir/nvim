@@ -22,7 +22,7 @@ return {
         local unicode_diagnostics = {
             name = "unicode-substitutions",
             method = null_ls.methods.DIAGNOSTICS,
-            filetypes = {},
+            filetypes = {"json"},
             generator = {
                 fn = function(params)
                     local diagnostics = {}

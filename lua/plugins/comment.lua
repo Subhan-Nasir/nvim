@@ -7,6 +7,7 @@ return {
         require("Comment").setup({
             ignore = '^$'
         })
+        vim.api.nvim_command('set commentstring=#%s')
     end
 }
 
