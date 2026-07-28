@@ -19,8 +19,17 @@ return {
                 SignColumn = { bg = "NONE" },
                 CursorLineNr = { bg = "NONE" },
                 WinSeparator = { fg = "#363636" },
+                CurSearch = {
+                    bg = "#8300e8",
+                    fg = "#FFFFFF",
+                },
+                IncSearch = {
+                    fg = "#8300e8",
+                    bg = "#FFFFFF",
+                }
             },
         })
+
         vim.cmd([[colorscheme gruvbox]])
     end,
     opts = {},
