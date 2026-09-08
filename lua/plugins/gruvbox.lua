@@ -16,6 +16,7 @@ return {
             },
             transparent_mode = false,
             overrides = {
+                Normal = { bg = "#191515" },
                 SignColumn = { bg = "NONE" },
                 CursorLineNr = { bg = "NONE" },
                 WinSeparator = { fg = "#363636" },
